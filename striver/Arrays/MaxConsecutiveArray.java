@@ -10,6 +10,7 @@ public class MaxConsecutiveArray {
             else{
                 count=0;
             }
+            //for each time maxi variable will be updated. to keep track of maximum sequence if else block is executed then count will be 0
             maxi = Math.max(maxi, count);
         }
         System.out.println("Maximum Consecutive is :"+maxi);
