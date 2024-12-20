@@ -67,15 +67,62 @@ public class SetMatrixZero {
         return arr;
 
      }
+
+     public static int[][] optimal(int arr[][], int n, int m){
+    //    initution for better appraoch we noticed that we took an extra row and col to keep track which leads to increase in time ans space complexicity
+    //step-1 serach for an element if any zero is found mark row and col as 0
+    int col0=1;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            if(arr[i][j] == 0){
+                //marking ith row
+                arr[i][0] = 0;
+                //marking jth col condition if arr[j]!=0 then only we need to mark else mark it in col0;
+                if(j!= 0){
+                    arr[0][j] = 0;                    
+                }
+                else{
+                    col0=0;
+                }
+            }
+
+        }
+    }
+    //step-2 except row and col we are marking 0 based On row and col value
+    for(int i=1; i<n; i++){
+        for(int j=1; j<m; j++){
+            if(arr[i][j]!=0){
+                //check for any one condition is there any 0 in the row or col
+                if(arr[0][j]==0 || arr[i][0]==0){
+                    arr[i][j]=0;
+                }
+            }
+
+        }
+    }
+    //step-3 work on in rows and col
+    if(arr[0][0]==0){
+        for(int j=0; j<m; j++){
+            arr[0][j]=0;
+        }
+    }
+    if(col0==0){
+        for(int i=0; i<n; i++){
+            arr[i][0] =0;
+        }
+    }
+        return arr;
+     }
     public static void main(String[] args) {
         int [][] arr = {{1, 1, 1}, 
                         {1, 0, 1}, 
                         {1, 1 ,1}};
-                    //  {0, 0, 0}, 
-                    //  {1, 0 ,1}};
+                    //  {1, 0, 1}, 
+                    //  {0, 0 ,0}};
                     // {{1, 0, 1}, 
         // int [][] finalarr = bruteForce(arr, arr.length, arr[0].length);
-        int [][] finalarr = better(arr, arr.length, arr[0].length);
+        // int [][] finalarr = better(arr, arr.length, arr[0].length);
+        int [][] finalarr = optimal(arr, arr.length, arr[0].length);
 
 
         System.out.println("Printing array Elements : ");
