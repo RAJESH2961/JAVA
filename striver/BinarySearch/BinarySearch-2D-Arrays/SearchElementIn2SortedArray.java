@@ -68,6 +68,27 @@ public static boolean optimal(int mat[][], int target){
     }
     return false;
 }
+//Optimal incase of row is increasing and col is increasing
+public static int[] optimal1(int arr[][], int target){
+    int n = arr.length;
+    int m = arr[0].length;
+
+    int row = 0, col = m-1;
+    while(row <n && col > 0){
+        if(arr[row][col] == target) return new int[]{row, col};
+        else if(arr[row][col] < target){
+            row++;
+        }
+        else{
+            col--;
+        }
+    }
+
+    return new int[] {-1,-1};
+}
+
+
+
 
     public static void main(String[] args) {
         int mat[][] = {
@@ -76,8 +97,19 @@ public static boolean optimal(int mat[][], int target){
             {11 ,12 ,13 ,14, 15}
         };
 
+        int[][] mat1 = {
+            {1,  2,  3,  4,  5},
+            {6,  7,  8,  9,  10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20},
+            {21, 22, 23, 24, 25}
+        };
+        
+
         System.out.println("Brute Force :"+brute(mat, 13));
         System.out.println("Better Approach :"+better(mat, 13));
         System.out.println("Optimal Approach :"+optimal(mat, 13));
+        int optimal1[]  = optimal1(mat1, 13);
+        System.out.println("Optimal1 Approach :" + optimal1[0] +" "+ optimal1[1]);
     }
 }
