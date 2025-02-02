@@ -47,6 +47,28 @@ public class SearchElementIn2SortedArray{
         }
         return ans;
     }
+
+    //Optimal Solution 
+    // Converting the 2-D array into 1-D Array in Imagination not in real world
+public static boolean optimal(int mat[][], int target){
+    int n = mat.length;
+    int m = mat[0].length;
+    int low = 0; 
+    int high = ((n*m)-1);
+    while(low <= high){
+        int mid = low + (high - low) / 2;
+        //We have to find Coordinates to check in 2-D MAtrix to find we use below formula
+        int row = mid/m;
+        int col = mid%m;
+        if(mat[row][col] == target) return true;
+        else if(mat[row][col] < target) low = mid+1;
+        else{
+            high = mid-1;
+        }
+    }
+    return false;
+}
+
     public static void main(String[] args) {
         int mat[][] = {
             {1, 2, 3 ,4 ,5},
@@ -56,5 +78,6 @@ public class SearchElementIn2SortedArray{
 
         System.out.println("Brute Force :"+brute(mat, 13));
         System.out.println("Better Approach :"+better(mat, 13));
+        System.out.println("Optimal Approach :"+optimal(mat, 13));
     }
 }
