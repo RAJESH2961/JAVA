@@ -12,7 +12,7 @@ public class PeakElement {
     public static int optimal(int arr[]){
         int n = arr.length;
         if(n == 1) return arr[0]; //In case there is only one element we can return beacuse we consider both sides -infinity
-        if(arr[0] > arr[1]) return arr[1]; // first element case - infinity 2 0  peak is 0th index
+        if(arr[0] > arr[1]) return arr[0]; // first element case - infinity 2 0  peak is 0th index
         if(arr[n-1] > arr[n-2]) return arr[n-1]; // Last Element case 10 20 -infinity so, Peak is arr[n-1];
         //Here we reduced/ shirinked the array by eliminating first and last element so when checking mid-1 & mid+1 there will be no overflow 
         // Over flow will occur when case 0 1 -infinity low = 0 mid = 1 high = infinity if we compare mid+1 out of bound error
@@ -48,7 +48,7 @@ public class PeakElement {
     public static int Optimal1(int arr[]){
         int n = arr.length;
         if(n == 1) return arr[0]; //In case there is only one element we can return beacuse we consider both sides -infinity
-        if(arr[0] > arr[1]) return arr[1]; // first element case - infinity 2 0  peak is 0th index
+        if(arr[0] > arr[1]) return arr[0]; // first element case - infinity 2 0  peak is 0th index
         if(arr[n-1] > arr[n-2]) return arr[n-1]; // Last Element case 10 20 -infinity so, Peak is arr[n-1];
         //Here we reduced/ shirinked the array by eliminating first and last element so when checking mid-1 & mid+1 there will be no overflow 
         // Over flow will occur when case 0 1 -infinity low = 0 mid = 1 high = infinity if we compare mid+1 out of bound error
