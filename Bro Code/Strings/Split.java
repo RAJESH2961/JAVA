@@ -7,6 +7,7 @@ public class Split {
         String inputDigit = "apple1banana2grape3";
         String[] inputParts = inputDigit.split("\\d");  // Split by each digit
         System.out.println(Arrays.toString(inputParts));
+        System.out.println(inputParts[1]);
         // Split by digits based on 2 or more digits
         String input = "abc123def456ghi";
         String[] result = input.split("\\d+");// split based on digits if it is \\d if \\d+ two or more digits
