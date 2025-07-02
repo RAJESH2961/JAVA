@@ -29,9 +29,23 @@ public class NumberOfSubStringContainingAll3Character {
         }
         return cnt;
     }
+
+    public static int optimal(String s) {
+        int cnt = 0;
+        int [] lastseen = {-1,-1,-1}; // last seen index of a, b, c
+        for(int i = 0; i < s.length(); i++) {
+            lastseen[s.charAt(i) - 'a'] = i;
+            // if(lastseen[0] != -1 && lastseen[1] !=-1 && lastseen[2] !=-1) {
+                cnt = cnt+ (1+Math.min(lastseen[0], Math.min(lastseen[1], lastseen[2])));
+            // }
+            
+        }
+        return cnt;
+    }
     public static void main(String[] args) {
         String s = "bbacba";
         System.out.println("Brute Force Approach : "+numberOfSubstrings(s));
         System.out.println("Better  Approach : "+better(s));
+        System.out.println("Better  Approach : "+optimal(s));
     }
 }
